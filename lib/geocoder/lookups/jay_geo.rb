@@ -16,7 +16,7 @@ module Geocoder::Lookup
     end
 
     def results(query)
-      result = fetch_data(query)
+      result = query.loopback_ip_address? ? nil : fetch_data(query)
 
       valid_result?(result) ? [result] : []
     end
